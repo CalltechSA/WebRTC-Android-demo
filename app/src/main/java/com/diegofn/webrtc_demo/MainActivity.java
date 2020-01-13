@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://demos.calltechsa.com:444/Click_To_Call/Home/UserCall/");
+        webView.loadUrl("https://clicktocall.calltechsa.com/clicktovideo/clicktovideo.html");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 final String[] requestedResources = request.getResources();
                 for (String r : requestedResources) {
                     if (r.equals(PermissionRequest.RESOURCE_AUDIO_CAPTURE)) {
-                        if(request.getOrigin().toString().equals("https://demos.calltechsa.com:444/")) {
+                        if(request.getOrigin().toString().equals("https://clicktocall.calltechsa.com/")) {
                             request.grant(request.getResources());
                         } else {
                             request.deny();
