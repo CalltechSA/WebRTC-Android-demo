@@ -1,6 +1,8 @@
 package com.diegofn.webrtc_demo;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 
 import android.webkit.WebChromeClient;
@@ -15,12 +17,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://clicktocall.calltechsa.com/clicktovideo/clicktovideo.html");
+        webView.loadUrl("https://demos.calltechsa.com:444/Click_To_Call/Home/UserCall/");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 final String[] requestedResources = request.getResources();
                 for (String r : requestedResources) {
                     if (r.equals(PermissionRequest.RESOURCE_AUDIO_CAPTURE)) {
-                        if(request.getOrigin().toString().equals("https://clicktocall.calltechsa.com/")) {
+                        if(request.getOrigin().toString().equals("https://demos.calltechsa.com:444/")) {
                             request.grant(request.getResources());
                         } else {
                             request.deny();
