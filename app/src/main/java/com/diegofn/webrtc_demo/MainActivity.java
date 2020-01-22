@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://demos.calltechsa.com:444/Click_To_Call/Home/UserCall/");
+        webView.loadUrl("https://demos.calltechsa.com:444/CTWeb/");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
