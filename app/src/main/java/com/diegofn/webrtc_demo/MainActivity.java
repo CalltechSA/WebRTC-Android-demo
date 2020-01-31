@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(
                 new SSLTolerentWebViewClient()
         );
-        webView.loadUrl("https://clicktocall.calltechsa.com/clicktovideo/clicktovideo.html");
+        webView.loadUrl("https://clicktocall.calltechsa.com/experienciausuario/clicktocall.html");
 
         webView.setWebChromeClient(new WebChromeClient() {
 
