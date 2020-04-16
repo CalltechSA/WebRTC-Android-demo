@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 final String[] requestedResources = request.getResources();
                 for (String r : requestedResources) {
                     if (r.equals(PermissionRequest.RESOURCE_AUDIO_CAPTURE)) {
-                        if(request.getOrigin().toString().equals("ttps://clicktocalldespegar.calltechsa.com/")) {
+                        if(request.getOrigin().toString().equals("https://clicktocalldespegar.calltechsa.com/")) {
                             request.grant(request.getResources());
 
                         } else {
