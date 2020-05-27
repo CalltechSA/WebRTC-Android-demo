@@ -2,6 +2,7 @@ package com.diegofn.webrtc_demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.media.AudioManager;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private WebView webView;
     private PermissionRequest mPermissionRequest;
     private AudioManager audioManager;
-    private static final String DESKTOP_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36";
+    private static final String DESKTOP_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36";
 
 
     @Override
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
+
+        webView.loadUrl("https://clicktocall.teleperformance.co/cticontroldespegar/");
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -48,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setUserAgentString(DESKTOP_USER_AGENT);
 
 
-        webView.setWebViewClient(
+       /* webView.setWebViewClient(
                 new SSLTolerentWebViewClient()
-        );
-        webView.loadUrl("https://clicktocalldespegar.calltechsa.com/cticontroldespegar/");
+        );*/
+//        webView.loadUrl("https://clicktocall.teleperformance.co/cticontroldespegar/");
 
         webView.setWebChromeClient(new WebChromeClient() {
 
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 final String[] requestedResources = request.getResources();
                 for (String r : requestedResources) {
                     if (r.equals(PermissionRequest.RESOURCE_AUDIO_CAPTURE)) {
-                        if(request.getOrigin().toString().equals("https://clicktocalldespegar.calltechsa.com/")) {
+                        if(request.getOrigin().toString().equals("https://clicktocall.teleperformance.co/")) {
                             request.grant(request.getResources());
 
                         } else {
@@ -77,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
      //https://stackoverflow.com/questions/48702140/webview-https-handshake-failed
-    class SSLTolerentWebViewClient extends WebViewClient {
+    /*class SSLTolerentWebViewClient extends WebViewClient {
         @Override
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             handler.proceed(); // Ignore SSL certificate errors
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
